@@ -51,11 +51,15 @@ const start = async () => {
       });
     });
 
-    if (process.env.NODE_ENV !== 'production') {
-      const PORT = Number(process.env.PORT) || 3000;
-      await app.listen({ port: PORT });
-      console.log(`Server is running on port ${PORT}`);
-    }
+    const PORT = Number(process.env.PORT) || 3000;
+    const HOST = process.env.NODE_ENV === 'production' ? '0.0.0.0' : 'localhost';
+
+    await app.listen({
+      port: PORT,
+      host: HOST,
+    });
+
+    console.log(`Server is running on ${HOST}:${PORT}`);
   } catch (err) {
     console.error('Failed to start server:', err);
     process.exit(1);
