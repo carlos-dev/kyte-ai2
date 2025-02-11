@@ -5,7 +5,7 @@ import cors from '@fastify/cors';
 import dotenv from 'dotenv';
 import indexRouter from './routes/index.js';
 import { logger } from './middleware/logger.js';
-import db from './config/mongodb.js';
+// import db from './config/mongodb.js';
 dotenv.config();
 const app = fastify({
     logger: true, // Habilita o logger do Fastify
@@ -13,7 +13,7 @@ const app = fastify({
 const start = async () => {
     try {
         // Database
-        await app.register(db);
+        // await app.register(db);
         // plugins
         await app.register(fastifyCookie);
         await app.register(fastifyHelmet);
